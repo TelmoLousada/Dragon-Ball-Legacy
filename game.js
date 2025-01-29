@@ -1,11 +1,17 @@
 const gameArea = document.getElementById("gameArea");
 const nimbus = document.getElementById("nimbus");
+const backgroundMusic = document.getElementById("backgroundMusic"); // Get the audio element
 
 let nimbusLeft = 50;
 let nimbusTop = 50;
 const nimbusSpeed = 10;
 
 let obstacles = [];
+
+// Start the music when the game loads
+window.addEventListener("load", () => {
+    backgroundMusic.play();
+});
 
 function moveNimbus(event) {
     switch (event.key) {
@@ -33,7 +39,7 @@ function createObstacle() {
     const obstacle = document.createElement("div");
     obstacle.classList.add("obstacle");
     obstacle.style.left = `${window.innerWidth}px`;
-    obstacle.style.top = `${Math.random() * (window.innerHeight - 30)}px`; // Ensure obstacle is within the game area
+    obstacle.style.top = `${Math.random() * (window.innerHeight - 30)}px`;
     gameArea.appendChild(obstacle);
     obstacles.push(obstacle);
 }
@@ -46,7 +52,7 @@ function moveObstacles() {
 
         if (obstacleLeft + 30 < 0) {
             obstacle.remove();
-            obstacles.splice(index, 1); // Remove the specific obstacle from the array
+            obstacles.splice(index, 1);
         }
     }
 }
@@ -77,6 +83,10 @@ function resetGame() {
 
     obstacles.forEach((obstacle) => obstacle.remove());
     obstacles = [];
+
+    // Reset the music
+    backgroundMusic.currentTime = 0; // Rewind to the start
+    backgroundMusic.play(); // Restart the music
 }
 
 document.addEventListener("keydown", moveNimbus);
