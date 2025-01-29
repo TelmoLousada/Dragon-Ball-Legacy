@@ -39,7 +39,8 @@ function createObstacle() {
 }
 
 function moveObstacles() {
-    obstacles.forEach((obstacle, index) => {
+    for (let index = obstacles.length - 1; index >= 0; index--) {
+        const obstacle = obstacles[index];
         const obstacleLeft = parseFloat(obstacle.style.left);
         obstacle.style.left = `${obstacleLeft - 5}px`;
 
@@ -47,7 +48,7 @@ function moveObstacles() {
             obstacle.remove();
             obstacles.splice(index, 1); // Remove the specific obstacle from the array
         }
-    });
+    }
 }
 
 function checkCollisions() {
@@ -82,3 +83,4 @@ document.addEventListener("keydown", moveNimbus);
 
 setInterval(createObstacle, 2000);
 setInterval(moveObstacles, 20);
+setInterval(checkCollisions, 20);
