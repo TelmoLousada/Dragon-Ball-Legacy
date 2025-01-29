@@ -81,6 +81,6 @@ function resetGame() {
 
 document.addEventListener("keydown", moveNimbus);
 
-setInterval(createObstacle, 2000);
+setInterval(createObstacle, 500);
 setInterval(moveObstacles, 20);
 setInterval(checkCollisions, 20);
