@@ -1,6 +1,6 @@
 const gameArea = document.getElementById("gameArea");
 const nimbus = document.getElementById("nimbus");
-const backgroundMusic = document.getElementById("backgroundMusic"); // Get the audio element
+const backgroundMusic = document.getElementById("backgroundMusic");
 
 let nimbusLeft = 50;
 let nimbusTop = 50;
@@ -8,7 +8,6 @@ const nimbusSpeed = 10;
 
 let obstacles = [];
 
-// Start the music when the game loads
 window.addEventListener("load", () => {
     backgroundMusic.play();
 });
@@ -69,7 +68,7 @@ function checkCollisions() {
             nimbusRect.top < obstacleRect.bottom &&
             nimbusRect.bottom > obstacleRect.top
         ) {
-            alert("Game Over! You hit an obstacle.");
+            alert("Oh no! Tao Pai Pai got you! Game Over!");
             resetGame();
         }
     });
@@ -84,9 +83,9 @@ function resetGame() {
     obstacles.forEach((obstacle) => obstacle.remove());
     obstacles = [];
 
-    // Reset the music
-    backgroundMusic.currentTime = 0; // Rewind to the start
-    backgroundMusic.play(); // Restart the music
+
+    backgroundMusic.currentTime = 0;
+    backgroundMusic.play();
 }
 
 document.addEventListener("keydown", moveNimbus);
