@@ -8,6 +8,7 @@ const nimbusSpeed = 10;
 let obstacles = [];
 
 window.addEventListener("load", () => {
+    backgroundMusic.volume = 0.2;
     backgroundMusic.play();
 });
 
@@ -36,13 +37,13 @@ function moveNimbus(event) {
 
 function createObstacle() {
     const obstacle = document.createElement("img");
-    obstacle.src = "assets/Tao Pai Pai.png"; // Ensure this path is correct
+    obstacle.src = "assets/Tao Pai Pai.png";
     obstacle.alt = "Tao Pai Pai";
     obstacle.classList.add("obstacle");
-    
+
     obstacle.style.position = "absolute";
-    obstacle.style.width = "50px"; // Adjust size as needed
-    obstacle.style.height = "50px";
+    obstacle.style.width = "175px";
+    obstacle.style.height = "175px";
     obstacle.style.left = `${window.innerWidth}px`;
     obstacle.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
 
