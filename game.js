@@ -5,7 +5,6 @@ const backgroundMusic = document.getElementById("backgroundMusic");
 let nimbusLeft = 50;
 let nimbusTop = 50;
 const nimbusSpeed = 10;
-
 let obstacles = [];
 
 window.addEventListener("load", () => {
@@ -28,6 +27,7 @@ function moveNimbus(event) {
             break;
     }
 
+    nimbus.style.position = "absolute";
     nimbus.style.left = `${nimbusLeft}px`;
     nimbus.style.top = `${nimbusTop}px`;
 
@@ -35,10 +35,17 @@ function moveNimbus(event) {
 }
 
 function createObstacle() {
-    const obstacle = document.createElement("div");
+    const obstacle = document.createElement("img");
+    obstacle.src = "assets/Tao Pai Pai.png"; // Ensure this path is correct
+    obstacle.alt = "Tao Pai Pai";
     obstacle.classList.add("obstacle");
+    
+    obstacle.style.position = "absolute";
+    obstacle.style.width = "50px"; // Adjust size as needed
+    obstacle.style.height = "50px";
     obstacle.style.left = `${window.innerWidth}px`;
-    obstacle.style.top = `${Math.random() * (window.innerHeight - 30)}px`;
+    obstacle.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+
     gameArea.appendChild(obstacle);
     obstacles.push(obstacle);
 }
@@ -49,7 +56,7 @@ function moveObstacles() {
         const obstacleLeft = parseFloat(obstacle.style.left);
         obstacle.style.left = `${obstacleLeft - 5}px`;
 
-        if (obstacleLeft + 30 < 0) {
+        if (obstacleLeft + 50 < 0) {
             obstacle.remove();
             obstacles.splice(index, 1);
         }
@@ -82,7 +89,6 @@ function resetGame() {
 
     obstacles.forEach((obstacle) => obstacle.remove());
     obstacles = [];
-
 
     backgroundMusic.currentTime = 0;
     backgroundMusic.play();

@@ -33,7 +33,6 @@ body {
 
 .obstacle {
     position: absolute;
-    width: 175px;
-    height: 175px;
-    background-color: red;
+    width: 200px;
+    height: 200px;
 }
