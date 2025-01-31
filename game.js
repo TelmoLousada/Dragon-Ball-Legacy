@@ -7,10 +7,10 @@ let nimbusTop = 50;
 const nimbusSpeed = 10;
 let obstacles = [];
 
-window.addEventListener("load", () => {
+window.addEventListener("click", () => {
     backgroundMusic.volume = 0.2;
     backgroundMusic.play();
-});
+}, { once: true });
 
 function moveNimbus(event) {
     switch (event.key) {
